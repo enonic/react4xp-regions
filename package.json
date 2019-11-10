@@ -2,12 +2,29 @@
   "name": "react4xp-templates",
   "version": "0.1.0",
   "description": "Optional ready-made React4xp templates",
-  "main": "index.js",
   "files": [
+    "LICENCE",
+    "package.json",
     "README.md",
-    "LICENCE"
+    "_entries/**/*.*",
+    "*.es",
+    "*.es6",
+    "*.js",
+    "*.ts",
+    "*.jsx",
+    "*.tsx",
+    "*.*ss",
+    "*.*g",
+    "*.gif",
+    "*.ico"
   ],
   "scripts": {
+    "clean": "rimraf _entries && rimraf *.js && rimraf *.jsx && rimraf *.ts && rimraf *.tsx && rimraf *.es && rimraf *.es6 && rimraf *.*ss && rimraf *.*g && rimraf *.gif && rimraf *.ico",
+    "copy": "copyfiles -u 1 src/**/*.* .",
+    "lint": "eslint src/**/*.* --fix",
+    "test": "echo \"NO TESTS IMPLEMENTED YET!\n\"",
+    "prepublish": "npm run lint && npm run test && npm run copy",
+    "postpublish": "npm run clean"
   },
   "repository": {
     "type": "git",
@@ -20,5 +37,31 @@
   },
   "homepage": "https://github.com/enonic/react4xp-templates",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "copyfiles": "^2.1.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.1.0",
+    "rimraf": "^2.0.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.18.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,es,es6}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  }
 }

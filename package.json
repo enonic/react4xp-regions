@@ -1,0 +1,24 @@
+{
+  "name": "react4xp-templates",
+  "version": "0.1.0",
+  "description": "Optional ready-made React4xp templates",
+  "main": "index.js",
+  "files": [
+    "README.md",
+    "LICENCE"
+  ],
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enonic/react4xp-templates.git"
+  },
+  "author": "Espen Norderud",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/enonic/react4xp-templates/issues"
+  },
+  "homepage": "https://github.com/enonic/react4xp-templates",
+  "dependencies": {},
+  "devDependencies": {}
+}

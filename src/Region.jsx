@@ -9,7 +9,7 @@ export default ({
     name = "main",
     tag}) =>
 {
-    const regionContent = ((content.page || {}).regions || {})[name];
+    const regionContent = ((content.page || {}).regions || {})[name] || {};
 
     // TODO: sanitize tag and name: not all characters (or tags) are acceptable
     const TAG = tag ?

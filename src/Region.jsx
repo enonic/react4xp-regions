@@ -5,9 +5,9 @@ const ComponentTag = (component) => (component && component.path) ?
     null;
 
 export default ({
-                    content = {},
-                    name="main",
-                    tag}) =>
+    content = {},
+    name = "main",
+    tag}) =>
 {
     const regionContent = ((content.page || {}).regions || {})[name];
 
@@ -26,10 +26,9 @@ export default ({
                 regionContent.components && regionContent.components.length > 0 ?
                     regionContent.components
                         .map(component => ComponentTag(component))
-                        .join('\n')
-                    :
+                        .join('\n')                    :
                     ''
-                }\t\t\t\t\t\n`
+            }\t\t\t\t\t\n`,
         }}
     ></TAG>;
-}
+};

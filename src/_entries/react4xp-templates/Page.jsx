@@ -5,9 +5,9 @@ export default ({
     regions,
     content,
     title,
-    regionTag
+    regionTag,
     // TODO: Allow custom head elements through props?
-                }) =>
+}) =>
     [
         '<!DOCTYPE html>',
         <html>
@@ -25,5 +25,5 @@ export default ({
                         null
                 }
             </body>
-        </html>
+        </html>,
     ];

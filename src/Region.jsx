@@ -4,29 +4,29 @@ const ComponentTag = (component) => (component && component.path) ?
     `\t\t\t\t\t\t\n\t\t\t\t\t\t\t<!--# COMPONENT ${component.path} -->` :
     null;
 
-export default (props) =>
-{
-    const {content, name = "main", tag} = props;
-    if (!content || !content.page) {
-        console.error('<Region> props: ' + JSON.stringify(props));
-        throw Error("Can't render <Region> without content.page.");
+export default ({regionData, name = "main", tag, clazz}) =>  {
+    if (!((name || '').trim())) {
+        console.error(`<Region NO_NAME> regionData: ${JSON.stringify(regionData)}`);
+        throw Error(`Can't render <Region> without a name.`);
     }
-    const regionContent = ((content.page || {}).regions || {})[name] || {};
 
-    // TODO: sanitize tag and name: not all characters (or tags) are acceptable
-    const TAG = tag ?
-        tag :
-        (name === "main") ?
-            "main" :
-            "div";
+    if (
+        !regionData ||
+        typeof regionData !== 'object' ||
+        !Object.keys(regionData).length
+    ) {
+        console.error(`<Region "${name}"> regionData: ${JSON.stringify(regionData)}`);
+        throw Error(`Can't render <Region "${name}"> without regionData.`);
+    }
 
+    const TAG = tag || "div";
     return <TAG
         data-portal-region={name}
-        className="xp-region"
+        className={"xp-region " + (clazz ? clazz : name)}
         dangerouslySetInnerHTML={{
             __html: `\t\t\t\t\t${
-                regionContent.components && regionContent.components.length > 0 ?
-                    regionContent.components
+                regionData.components && regionData.components.length > 0 ?
+                    regionData.components
                         .map(component => ComponentTag(component))
                         .join('\n')                    :
                     ''

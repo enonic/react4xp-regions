@@ -14,7 +14,6 @@ export default ({ content }) => {
 
     return <html>
         <head>
-            { /*  TODO: Allow custom head elements through props? Or the other way: skip title to keep this minimal? */ }
             {content.displayName ? <title>{content.displayName}</title> : null}
         </head>
 

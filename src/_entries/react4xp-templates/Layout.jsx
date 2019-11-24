@@ -30,7 +30,7 @@ const Layout = ({ component, containerTag, containerClass, regionNames, regionCl
     const TAG = containerTag || 'div';
 
     return <TAG className={containerClass}>
-        <Regions regions={component.regions} classes={regionClasses} names={regionNames}/>
+        <Regions regionsData={component.regions} classes={regionClasses} names={regionNames}/>
     </TAG>;
 };
 Layout.propTypes = {

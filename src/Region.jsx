@@ -35,7 +35,7 @@ const Region = ({name, regionData, tag, addClass}) =>  {
                 regionData.components && regionData.components.length > 0 ?
                     regionData.components
                         .map(component => ComponentTag(component))
-                        .join('\n')                    :
+                        .join('\n') :
                     ''
             }\t\t\t\t\t\n`,
         }}

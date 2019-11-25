@@ -38,6 +38,8 @@ const Page = ({ content, regionNames, regionClasses }) => {
     </html>;
 
 };
+
+
 Page.propTypes = {
     content: PropTypes.shape({
         displayName: PropTypes.string,

@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import Regions from 'react4xp-templates/Regions';
 
 /**
- * @param component (mandatory object): a page's content data (e.g. from portal.getComponent()).
+ * @param component (mandatory object): component data (e.g. from portal.getComponent()).
  *      Has a .regions attribute, which is an object where keys are region names and values are region data (e.g. component.regions)
  * @param containerTag (optional string): the HTML tag of the layout's outer container element. Defaults to 'div'.
  * @param containerClass (optional string): the HTML class of the layout's outer container element. No default.
  * @param regionNames (optional string or array of strings): selects to display only one, or some specific, of the available regions in the
- *      regions data. The array defines sequence, so this can also be used to display of all regions in a specific order.
- *      If omitted, all regions are displayed in the order of Object.keys(regionsData).
+ *     regions data. The array defines sequence, so this can also be used to display of all regions in a specific order.
+ *     If omitted, all regions are displayed in the order of Object.keys(component.regions).
  * @param regionClasses (optional boolean, string or object): HTML class for the region elements, added after "xp-region".
  *     If boolean, and it's true: adds a class that is the same as the name
  *     If string, all regions get that class.
@@ -33,6 +33,8 @@ const Layout = ({ component, containerTag, containerClass, regionNames, regionCl
         <Regions regionsData={component.regions} classes={regionClasses} names={regionNames}/>
     </TAG>;
 };
+
+
 Layout.propTypes = {
     component: PropTypes.shape({
         regions: PropTypes.objectOf(PropTypes.object).isRequired,

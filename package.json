@@ -1,12 +1,12 @@
 {
   "name": "react4xp-templates",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Optional ready-made React4xp templates",
   "files": [
     "LICENCE",
     "package.json",
     "README.md",
-    "_entries/**/*.*",
+    "entries/**/*.*",
     "*.es",
     "*.es6",
     "*.js",
@@ -19,7 +19,7 @@
     "*.ico"
   ],
   "scripts": {
-    "clean": "rimraf _entries && rimraf *.js && rimraf *.jsx && rimraf *.ts && rimraf *.tsx && rimraf *.es && rimraf *.es6 && rimraf *.*ss && rimraf *.*g && rimraf *.gif && rimraf *.ico",
+    "clean": "rimraf entries && rimraf *.js && rimraf *.jsx && rimraf *.ts && rimraf *.tsx && rimraf *.es && rimraf *.es6 && rimraf *.*ss && rimraf *.*g && rimraf *.gif && rimraf *.ico",
     "copy": "copyfiles -u 1 src/**/*.* .",
     "lint": "eslint src/**/*.* --fix",
     "test": "echo \"NO TESTS IMPLEMENTED YET!\n\"",
@@ -53,8 +53,8 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "peerDependencies": {
-    "react4xp-buildconstants": "^0.7.10",
-    "react4xp-build-components": "^0.3.11",
+    "react4xp-buildconstants": "^0.8.0",
+    "react4xp-build-components": "^0.3.12",
     "react": "^16",
     "prop-types": "^16"
   },

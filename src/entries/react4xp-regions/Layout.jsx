@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Regions from 'react4xp-templates/Regions';
+import Regions from 'react4xp-regions/Regions';
 
 /**
  * @param component (mandatory object): component data (e.g. from portal.getComponent()).

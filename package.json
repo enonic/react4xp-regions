@@ -1,7 +1,7 @@
 {
-  "name": "react4xp-templates",
+  "name": "react4xp-regions",
   "version": "0.2.0",
-  "description": "Optional ready-made React4xp templates",
+  "description": "Ready-made React4xp templates for handling XP regions, and bare-bone page/layout templates with regions supported/included",
   "files": [
     "LICENCE",
     "package.json",
@@ -28,14 +28,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enonic/react4xp-templates.git"
+    "url": "git+https://github.com/enonic/react4xp-regions.git"
   },
   "author": "Espen Norderud",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/enonic/react4xp-templates/issues"
+    "url": "https://github.com/enonic/react4xp-regions/issues"
   },
-  "homepage": "https://github.com/enonic/react4xp-templates",
+  "homepage": "https://github.com/enonic/react4xp-regions",
   "dependencies": {},
   "devDependencies": {
     "copyfiles": "^2.1.0",
@@ -54,7 +54,7 @@
   },
   "peerDependencies": {
     "react4xp-buildconstants": "^0.8.0",
-    "react4xp-build-components": "^0.3.12",
+    "react4xp-build-components": "^0.5.0",
     "react": "^16",
     "prop-types": "^16"
   },

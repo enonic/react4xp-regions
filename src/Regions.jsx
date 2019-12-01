@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Region from 'react4xp-templates/Region';
+import Region from 'react4xp-regions/Region';
 
 /**
  * @param regionsData (mandatory object): regions data object (e.g. content.page.regions).

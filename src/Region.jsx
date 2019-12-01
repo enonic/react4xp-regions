@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ComponentTag from 'react4xp-templates/ComponentTag';
+import ComponentTag from 'react4xp-regions/ComponentTag';
 
 /**
  * @param name (mandatory string): Region name, as defined in a part's/page's/layout's XML definition

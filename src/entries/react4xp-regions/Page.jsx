@@ -4,49 +4,50 @@ import PropTypes from 'prop-types';
 import Regions from 'react4xp-regions/Regions';
 
 /**
- * @param content (mandatory object): a page's content data (e.g. from portal.getContent()).
- *      Has a .page.regions attribute, which is an object where keys are region names and values are region data (e.g. content.page.regions)
+ * Page controller template: wraps a react rendering of a bare-bones HTML page, with regions if supplied with regions data.
+ * Can be used as a wrapping component, neating regular react children: <Page title="Page title"><h1>A heading!</h1></Page>
+ *
+ * @param title (optional string) Page title string
+ * @param regionsData (optional object): regions data object (e.g. content.page.regions).
+ *      Keys are region names, values are region data.
  * @param regionNames (optional string or array of strings): selects to display only one, or some specific, of the available regions in the
  *      regions data. The array defines sequence, so this can also be used to display of all regions in a specific order.
  *      If omitted, all regions are displayed in the order of Object.keys(regionsData).
  * @param regionClasses (optional boolean, string or object): HTML class for the region elements, added after "xp-region".
- *     If boolean, and it's true: adds a class that is the same as the name
- *     If string, all regions get that class.
- *     If object: keys are region names and values are a class name string for each region.
- * @returns A react4xp-representation (react component) of an XP page. Must be SERVER-SIDE-rendered by react4xp!
+ *      If boolean, and it's true: adds a class that is the same as the name
+ *      If string, all regions get that class.
+ *      If object: keys are region names and values are a class name string for each region.
+ * @param children (optional React component(s)): nested react components
+ * @param childrenAfterRegions (optional boolean): if false or omitted, children will be rendered first in body.
+ *      If true, they will be rendered below the regions.
+ * @returns React component array with <head> and <body>, but NOT <html>! This is left up to the calling
+ * context.
  */
-const Page = ({ content, regionNames, regionClasses }) => {
-    if (
-        !content ||
-        !content.page ||
-        typeof content.page  !== 'object' ||
-        !(Object.keys(content.page).length)
-    ) {
-        console.error(`<Page> missing content.page - content: ${JSON.stringify(content)}`);
-        throw Error(`Can't render <Page displayName="${content.displayName}"> without content.page.`);
-    }
-
-
-    return <html>
+const Page = ({title, regionsData, regionNames, regionClasses, children, childrenAfterRegions}) => {
+    return [
         <head>
-            {content.displayName ? <title>{content.displayName}</title> : null}
-        </head>
-
+            {title ? <title>{title}</title> : null}
+        </head>,
         <body className="xp-page">
-            <Regions regions={content.page.regions} classes={regionClasses} names={regionNames} />
-        </body>
-    </html>;
-
+            {!childrenAfterRegions ? children : null}
+            {regionsData ? <Regions regionsData={regionsData} classes={regionClasses} names={regionNames} /> : null}
+            {childrenAfterRegions ? children : null}
+        </body>,
+    ];
 };
 
 
 Page.propTypes = {
-    content: PropTypes.shape({
-        displayName: PropTypes.string,
-        page: PropTypes.shape({
-            regions: PropTypes.objectOf(PropTypes.object).isRequired,
-        }).isRequired,
-    }).isRequired,
+    title: PropTypes.string,
+    regionsData: PropTypes.objectOf(
+        PropTypes.shape({
+            components: PropTypes.arrayOf(
+                PropTypes.shape({
+                    path: PropTypes.string.isRequired,
+                })
+            ),
+        })
+    ),
     regionNames: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string),
@@ -56,6 +57,7 @@ Page.propTypes = {
         PropTypes.string,
         PropTypes.objectOf(PropTypes.string),
     ]),
+    childrenAfterRegions: PropTypes.bool,
 };
 
 export default Page;

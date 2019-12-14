@@ -54,19 +54,33 @@ const Regions = ({regionsData, names, tags, classes}) => {
     );
 };
 Regions.propTypes = {
-    regionsData: PropTypes.object.isRequired,
+    regionsData: PropTypes.objectOf(
+        PropTypes.shape({
+            components: PropTypes.arrayOf(
+                PropTypes.shape({
+                    path: PropTypes.string.isRequired,
+                })
+            ),
+        })
+    ).isRequired,
     names: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.arrayOf(
+            PropTypes.string
+        ),
     ]),
     tags: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.objectOf(PropTypes.string),
+        PropTypes.objectOf(
+            PropTypes.string
+        ),
     ]),
     classes: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.string,
-        PropTypes.objectOf(PropTypes.string),
+        PropTypes.objectOf(
+            PropTypes.string
+        ),
     ]),
 };
 

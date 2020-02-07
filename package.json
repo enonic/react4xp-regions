@@ -25,7 +25,8 @@
     "test": "echo \"NO TESTS IMPLEMENTED YET!\n\"",
     "prepublish": "npm run lint && npm run test && npm run copy",
     "postpublish": "npm run clean",
-    "pretest": "npm run clean && npm run copy"
+    "pretest": "npm run clean && npm run copy",
+    "local": "npm run pretest"
   },
   "repository": {
     "type": "git",

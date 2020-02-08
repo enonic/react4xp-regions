@@ -1,6 +1,6 @@
 {
   "name": "react4xp-regions",
-  "version": "0.2.0",
+  "version": "0.2.1-SNAPSHOT",
   "description": "Ready-made React4xp templates for handling XP regions, and bare-bone page/layout templates with regions supported/included",
   "files": [
     "LICENCE",
@@ -24,7 +24,9 @@
     "lint": "eslint src/**/*.* --fix",
     "test": "echo \"NO TESTS IMPLEMENTED YET!\n\"",
     "prepublish": "npm run lint && npm run test && npm run copy",
-    "postpublish": "npm run clean"
+    "postpublish": "npm run clean",
+    "pretest": "npm run clean && npm run copy",
+    "local": "npm run pretest"
   },
   "repository": {
     "type": "git",
@@ -53,8 +55,6 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "peerDependencies": {
-    "react4xp-buildconstants": "^0.8.0",
-    "react4xp-build-components": "^0.5.0",
     "react": "^16",
     "prop-types": "^16"
   },
